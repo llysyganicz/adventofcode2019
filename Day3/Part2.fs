@@ -1,4 +1,4 @@
-module Part1
+module Part2
 
   open System.IO
 
@@ -34,13 +34,18 @@ module Part1
                               | R l -> [ x .. x + l ] |> List.map(fun e -> { X = e; Y = y })
                               | D l -> [ y .. -1 .. y - l ] |> List.map(fun e -> { X = x; Y = e })
               let lastPoint = newPoints |> List.rev |> List.head
-              getPoints t lastPoint.X  lastPoint.Y (points @ newPoints)
-    | [] -> points |> List.distinct
+              getPoints t lastPoint.X  lastPoint.Y (points @ newPoints.Tail)
+    | [] -> points
+
+  let calculateSteps cross wire1 wire2 =
+    let steps1 = wire1 |> List.takeWhile (fun e -> e <> cross)
+    let steps2 = wire2 |> List.takeWhile (fun e -> e <> cross)
+    steps1.Length + steps2.Length
 
   let getResult() =
     let (wire1, wire2) = getData()
-    let points1 = getPoints wire1 0 0 []
-    let points2 = getPoints wire2 0 0 []
+    let points1 = { X = 0; Y = 0 } :: getPoints wire1 0 0 []
+    let points2 = { X = 0; Y = 0 } :: getPoints wire2 0 0 []
     let crosses = Set.intersect (Set.ofList points1) (Set.ofList points2)
-    crosses |> Set.map (fun e -> abs e.X +  abs e.Y ) |> Set.remove 0 |> Set.minElement
+    crosses |> Set.remove { X = 0; Y = 0 } |> Set.toList |> List.map (fun e -> calculateSteps e points1 points2) |> List.min
     
