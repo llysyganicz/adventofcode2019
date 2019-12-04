@@ -5,7 +5,9 @@
 | 1   | [The Tyranny of the Rocket Equation][Day1] | [&#10004;](./Day1/Part1.fs) | [&#10004;](./Day1/Part2.fs) |
 | 2   | [1202 Program Alarm][Day2]                 | [&#10004;](./Day2/Part1.fs) | [&#10004;](./Day2/Part2.fs) |
 | 3   | [Crossed Wires][Day3]                      | [&#10004;](./Day3/Part1.fs) | [&#10004;](./Day3/Part2.fs) |
+| 3   | [Secure Container][Day4]                   | [&#10004;](./Day4/Part1.fs) | [&#10004;](./Day4/Part2.fs) |
 
 [Day1]: https://adventofcode.com/2019/day/1
 [Day2]: https://adventofcode.com/2019/day/2
-[Day2]: https://adventofcode.com/2019/day/3
+[Day3]: https://adventofcode.com/2019/day/3
+[Day4]: https://adventofcode.com/2019/day/4
